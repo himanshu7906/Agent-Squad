@@ -1,0 +1,26 @@
+{
+  "pack": "agent-squad",
+  "version": "1.1.0",
+  "description": "Named domain-expert skill agents for Claude Code, Codex and Antigravity. Each works solo via /<name>; /squad runs them together as a workflow.",
+  "agents": [
+    { "name": "priya",  "title": "Product Strategist",       "domain": "requirements, user stories, scope, acceptance criteria" },
+    { "name": "arjun",    "title": "Software Architect",       "domain": "system design, trade-offs, service boundaries, ADRs" },
+    { "name": "ben",    "title": "Backend Engineer",         "domain": "APIs, services, business logic, auth, integrations" },
+    { "name": "fiona",    "title": "Frontend Engineer",        "domain": "UI components, state, accessibility, responsive design" },
+    { "name": "diana",   "title": "Data Engineer",            "domain": "schemas, SQL, migrations, query performance, pipelines" },
+    { "name": "omar",   "title": "DevOps & Cloud Engineer",  "domain": "CI/CD, containers, IaC, deployment, observability" },
+    { "name": "sara", "title": "Security Engineer",        "domain": "threat modeling, OWASP, secrets, auth flaws, dependencies" },
+    { "name": "quinn",    "title": "QA & Test Engineer",       "domain": "test strategy, unit/integration/e2e tests, edge cases" },
+    { "name": "rohan", "title": "Debugging Specialist",     "domain": "root-cause analysis, reproductions, incident triage" },
+    { "name": "will",    "title": "Technical Writer",         "domain": "READMEs, API docs, guides, changelogs, ADR polish" }
+  ],
+  "orchestrator": { "name": "squad", "title": "Leo, Squad Lead", "domain": "runs the agents together as a group workflow" },
+  "workflows": {
+    "feature": [["priya"], ["arjun"], ["diana"], ["ben", "fiona"], ["quinn"], ["sara"], ["will"]],
+    "bugfix":  [["rohan"], ["ben"], ["quinn"]],
+    "audit":   [["sara", "quinn", "arjun"]],
+    "ship":    [["quinn"], ["sara"], ["omar"], ["will"]],
+    "design":  [["priya"], ["arjun"]],
+    "api":     [["arjun"], ["diana"], ["ben"], ["quinn"], ["will"]]
+  }
+}
